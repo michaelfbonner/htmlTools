@@ -24,7 +24,7 @@
 %
 %% Example
 %
-%  PublishParameters.directoryCode = '/Users/michaelbonner/iMac_Projects/Pathways/Code';
+%  PublishParameters.directoryCode = directoryToolbox;
 %  htmlPublishDirectory(PublishParameters)
 % 
 %% See also

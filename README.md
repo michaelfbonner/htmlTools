@@ -4,6 +4,15 @@ function.
 
  
 
+**Documentation**
+
+Run CodeDescriptions.m to generate HTML documentation for this project. This
+will generate HTML documentation for all functions in a new directory titled
+Documentation. Brief descriptions of all functions can be found in the
+TABLE\_OF\_CONTENTS.html document.
+
+ 
+
 **Important caveat**
 
 This code is distributed in the hope that it will be useful, but without any
