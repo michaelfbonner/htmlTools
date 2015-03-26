@@ -6,7 +6,7 @@ function.
 
 **Documentation**
 
-The directory titled Documentation contains HTML manuals for all functions. See
+The directory titled documentation contains HTML manuals for all functions. See
 the TABLE\_OF\_CONTENTS.html file to get started.
 
  

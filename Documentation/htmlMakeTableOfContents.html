@@ -96,7 +96,6 @@ fprintf(fileID, <span class="string">'%s \n'</span>, <span class="string">'%'</s
     <span class="comment">% Get code groups</span>
     thisCodeGroupField = codeGroups{iCodeGroups};
     thisCodeGroupName = CodeNotes.(thisCodeGroupField).name;
-<span class="comment">%     thisCodeGroupDirectory = fullfile('..', thisCodeGroupName);</span>
     theseCodeDescriptions = CodeNotes.(thisCodeGroupField).code;
 
     <span class="comment">% Sort code alphabetically</span>
@@ -113,9 +112,7 @@ fprintf(fileID, <span class="string">'%s \n'</span>, <span class="string">'%'</s
     <span class="keyword">for</span> iCode = 1 : nCode
         thisCodeName = codeNamesSorted{iCode};
         [~, thisCodeNameNoExtension, ~] = fileparts(thisCodeName);
-<span class="comment">%         thisCodeFullfile = fullfile(thisCodeGroupDirectory, thisCodeName);</span>
         thisCodeDescription = codeDescriptionsSorted{iCode};
-<span class="comment">%         fprintf(fileID, '%s \n', ['% * &lt;file:' thisCodeNameNoExtension '.html ' thisCodeName '&gt; - ' thisCodeDescription ' | &lt;file:' thisCodeFullfile ' code&gt;']);</span>
         fprintf(fileID, <span class="string">'%s \n'</span>, [<span class="string">'% * &lt;file:'</span> thisCodeNameNoExtension <span class="string">'.html '</span> thisCodeName <span class="string">'&gt; - '</span> thisCodeDescription]);
 
     <span class="keyword">end</span>
@@ -209,7 +206,6 @@ for iCodeGroups = 1 : nCodeGroups
     % Get code groups
     thisCodeGroupField = codeGroups{iCodeGroups};
     thisCodeGroupName = CodeNotes.(thisCodeGroupField).name;
-%     thisCodeGroupDirectory = fullfile('..', thisCodeGroupName);
     theseCodeDescriptions = CodeNotes.(thisCodeGroupField).code;
     
     % Sort code alphabetically
@@ -226,9 +222,7 @@ for iCodeGroups = 1 : nCodeGroups
     for iCode = 1 : nCode
         thisCodeName = codeNamesSorted{iCode};
         [~, thisCodeNameNoExtension, ~] = fileparts(thisCodeName);
-%         thisCodeFullfile = fullfile(thisCodeGroupDirectory, thisCodeName);
         thisCodeDescription = codeDescriptionsSorted{iCode};
-%         fprintf(fileID, '%s \n', ['% * <file:' thisCodeNameNoExtension '.html ' thisCodeName '> - ' thisCodeDescription ' | <file:' thisCodeFullfile ' code>']);
         fprintf(fileID, '%s \n', ['% * <file:' thisCodeNameNoExtension '.html ' thisCodeName '> - ' thisCodeDescription]);
 
     end

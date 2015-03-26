@@ -48,9 +48,13 @@ function htmlPublishDirectory(PublishParameters)
 % Directories
 directoryCode = PublishParameters.directoryCode;
 directoryProject = PublishParameters.directoryProject;
-directoryOutput = fullfile(directoryProject, 'Documentation');
+directoryOutput = fullfile(directoryProject, 'documentation');
 if ~exist(directoryOutput, 'dir')
     mkdir(directoryOutput);
+end
+directoryMisc = fullfile(directoryProject, 'misc');
+if ~exist(directoryMisc, 'dir')
+    mkdir(directoryMisc);
 end
 
 % Files to publish
@@ -61,7 +65,7 @@ nMatlabFiles = length(matlabFiles);
 % Load in DatesEdited which keeps a log of when the code files were last
 % edited. This allows us to avoid re-publishing html documentation that
 % already exists
-DatesEditedFullfile = fullfile(directoryOutput, 'DatesEdited.mat');
+DatesEditedFullfile = fullfile(directoryMisc, 'DatesEdited.mat');
 if exist(DatesEditedFullfile, 'file')
     load(DatesEditedFullfile);
     % Loads:
