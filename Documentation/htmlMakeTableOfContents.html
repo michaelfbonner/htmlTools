@@ -1,0 +1,245 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>htmlMakeTableOfContents</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-26"><meta name="DC.source" content="htmlMakeTableOfContents.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>htmlMakeTableOfContents</h1><!--introduction--><p>Generate TABLE_OF_CONTENTS.m from filenames and descriptions</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#4">See also</a></li><li><a href="#5">Function</a></li><li><a href="#7">Assign variables</a></li><li><a href="#8">Write to TABLE_OF_CONTENTS.m</a></li></ul></div><h2>Syntax<a name="1"></a></h2><p>htmlWriteReadMe(ReadMeParameters)</p><h2>Description<a name="2"></a></h2><p>htmlMakeTableOfContents writes the names and descriptions of the files in CodeNotes to a TABLE_OF_CONTENTS.m file in the code directory</p><div><ul><li>TableParameters.CodeNotes.name  - name for this code group</li><li>TableParameters.CodeNotes.code  - N-by-P cell array. N is the number of files. Columen one of P is the filename with its file extension and column two of P is the file description.</li><li>TableParameters.directoryCode  - directory containing code</li><li>TableParameters.projectName     - name that will appear at the top of the TABLE_OF_CONTENTS.m file</li></ul></div><p>The TABLE_OF_CONTENTS.m file contains alpabetically sorted file descriptions with links to html files. If Matlab's 'publish' function is run on all files in the code directory, a TABLE_OF_CONTENTS.html file will be generated from this.</p><h2>Example<a name="3"></a></h2><pre>CodeDescriptions.stimuli.name = 'Stimuli';
+CodeDescriptions.stimuli.code = {
+'createImagePatches_v001.m'     'Create images with highlighted patches for labeling in Mech Turk';
+'fMRIprotocolCalculations_v001.m'   'Calculate numbers of stimuli and timing'};
+TableParameters.CodeNotes = CodeNotes;
+TableParameters.directoryCode = directoryCode;
+TableParameters.projectName = 'Pathways';</pre><h2>See also<a name="4"></a></h2><div><ul><li><a href="file:htmlPublishDirectory.html">htmlPublishDirectory</a></li><li><a href="file:htmlPublishProject.html">htmlPublishProject</a></li></ul></div><p>Michael F. Bonner | University of Pennsylvania | <a href="http://www.michaelfbonner.com">http://www.michaelfbonner.com</a></p><h2>Function<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> htmlMakeTableOfContents(TableParameters)
+</pre><h2>Assign variables<a name="7"></a></h2><pre class="codeinput">CodeNotes = TableParameters.CodeNotes;
+directoryCode = TableParameters.directoryCode;
+projectName = TableParameters.projectName;
+
+<span class="comment">% Get code groups</span>
+codeGroups = fieldnames(CodeNotes);
+nCodeGroups = length(codeGroups);
+</pre><h2>Write to TABLE_OF_CONTENTS.m<a name="8"></a></h2><p>TABLE_OF_CONTENTS.m is formatted to generate an easily readable HTML file (TABLE_OF_CONTENTS.html) when passed to the Matlab's 'publish' function.</p><pre class="codeinput"><span class="comment">% Start writing to file</span>
+outputFileName = <span class="string">'TABLE_OF_CONTENTS.m'</span>;
+outputFullFile = fullfile(directoryCode, outputFileName);
+fileID = fopen(outputFullFile, <span class="string">'w'</span>);
+
+<span class="comment">% Toolbox header information</span>
+fprintf(fileID, <span class="string">'%s \n'</span>, [<span class="string">'%% '</span> projectName]);
+fprintf(fileID, <span class="string">'%s \n'</span>, [<span class="string">'% Code for '</span> projectName]);
+fprintf(fileID, <span class="string">'%s \n'</span>, <span class="string">'%'</span>);
+
+<span class="comment">% Write code information to README</span>
+<span class="keyword">for</span> iCodeGroups = 1 : nCodeGroups
+
+    <span class="comment">% Get code groups</span>
+    thisCodeGroupField = codeGroups{iCodeGroups};
+    thisCodeGroupName = CodeNotes.(thisCodeGroupField).name;
+<span class="comment">%     thisCodeGroupDirectory = fullfile('..', thisCodeGroupName);</span>
+    theseCodeDescriptions = CodeNotes.(thisCodeGroupField).code;
+
+    <span class="comment">% Sort code alphabetically</span>
+    codeNames = theseCodeDescriptions(:, 1);
+    [codeNamesSorted, sortingIndices] = sort(codeNames);
+    codeDescriptionsSorted = theseCodeDescriptions(sortingIndices, 2);
+
+    <span class="comment">% Code group header information</span>
+    fprintf(fileID, <span class="string">'%s \n'</span>, [<span class="string">'%% '</span> thisCodeGroupName]);
+    fprintf(fileID, <span class="string">'%s \n'</span>, <span class="string">'%'</span>);
+
+    <span class="comment">% Code information</span>
+    nCode = size(theseCodeDescriptions, 1);
+    <span class="keyword">for</span> iCode = 1 : nCode
+        thisCodeName = codeNamesSorted{iCode};
+        [~, thisCodeNameNoExtension, ~] = fileparts(thisCodeName);
+<span class="comment">%         thisCodeFullfile = fullfile(thisCodeGroupDirectory, thisCodeName);</span>
+        thisCodeDescription = codeDescriptionsSorted{iCode};
+<span class="comment">%         fprintf(fileID, '%s \n', ['% * &lt;file:' thisCodeNameNoExtension '.html ' thisCodeName '&gt; - ' thisCodeDescription ' | &lt;file:' thisCodeFullfile ' code&gt;']);</span>
+        fprintf(fileID, <span class="string">'%s \n'</span>, [<span class="string">'% * &lt;file:'</span> thisCodeNameNoExtension <span class="string">'.html '</span> thisCodeName <span class="string">'&gt; - '</span> thisCodeDescription]);
+
+    <span class="keyword">end</span>
+
+<span class="keyword">end</span>  <span class="comment">% iCodeGroups loop</span>
+
+fclose(fileID);
+</pre><pre class="codeinput"><span class="keyword">end</span>  <span class="comment">% function htmlMakeTableOfContents(TableParameters)</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% htmlMakeTableOfContents
+%
+% Generate TABLE_OF_CONTENTS.m from filenames and descriptions
+% 
+%% Syntax
+% 
+% htmlWriteReadMe(ReadMeParameters)
+% 
+%% Description
+% 
+% htmlMakeTableOfContents writes the names and descriptions of the files in
+% CodeNotes to a TABLE_OF_CONTENTS.m file in the code directory
+% 
+% * TableParameters.CodeNotes.name  - name for this code group
+% * TableParameters.CodeNotes.code  - N-by-P cell array. N is the
+% number of files. Columen one of P is the filename with its file extension
+% and column two of P is the file description.
+% * TableParameters.directoryCode  - directory containing code
+% * TableParameters.projectName     - name that will appear
+% at the top of the TABLE_OF_CONTENTS.m file
+% 
+% The TABLE_OF_CONTENTS.m file contains alpabetically sorted file
+% descriptions with links to html files. If Matlab's 'publish' function is
+% run on all files in the code directory, a TABLE_OF_CONTENTS.html file
+% will be generated from this.
+%
+%% Example
+%
+%  CodeDescriptions.stimuli.name = 'Stimuli';
+%  CodeDescriptions.stimuli.code = { 
+% 'createImagePatches_v001.m'     'Create images with highlighted patches for labeling in Mech Turk';
+% 'fMRIprotocolCalculations_v001.m'   'Calculate numbers of stimuli and timing'};
+%  TableParameters.CodeNotes = CodeNotes;
+%  TableParameters.directoryCode = directoryCode;
+%  TableParameters.projectName = 'Pathways';
+% 
+%% See also
+%
+% * <file:htmlPublishDirectory.html htmlPublishDirectory>
+% * <file:htmlPublishProject.html htmlPublishProject>
+% 
+% Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
+
+
+
+%% Function
+
+function htmlMakeTableOfContents(TableParameters)
+
+
+%% Assign variables
+
+CodeNotes = TableParameters.CodeNotes;
+directoryCode = TableParameters.directoryCode;
+projectName = TableParameters.projectName;
+
+% Get code groups
+codeGroups = fieldnames(CodeNotes);
+nCodeGroups = length(codeGroups);
+
+
+
+%% Write to TABLE_OF_CONTENTS.m
+% 
+% TABLE_OF_CONTENTS.m is formatted to generate an easily readable HTML file
+% (TABLE_OF_CONTENTS.html) when passed to the Matlab's 'publish' function.
+
+% Start writing to file
+outputFileName = 'TABLE_OF_CONTENTS.m';
+outputFullFile = fullfile(directoryCode, outputFileName);
+fileID = fopen(outputFullFile, 'w');
+
+% Toolbox header information 
+fprintf(fileID, '%s \n', ['%% ' projectName]);
+fprintf(fileID, '%s \n', ['% Code for ' projectName]);
+fprintf(fileID, '%s \n', '%');
+
+% Write code information to README
+for iCodeGroups = 1 : nCodeGroups
+    
+    % Get code groups
+    thisCodeGroupField = codeGroups{iCodeGroups};
+    thisCodeGroupName = CodeNotes.(thisCodeGroupField).name;
+%     thisCodeGroupDirectory = fullfile('..', thisCodeGroupName);
+    theseCodeDescriptions = CodeNotes.(thisCodeGroupField).code;
+    
+    % Sort code alphabetically
+    codeNames = theseCodeDescriptions(:, 1);
+    [codeNamesSorted, sortingIndices] = sort(codeNames);
+    codeDescriptionsSorted = theseCodeDescriptions(sortingIndices, 2);
+ 
+    % Code group header information
+    fprintf(fileID, '%s \n', ['%% ' thisCodeGroupName]);
+    fprintf(fileID, '%s \n', '%');
+    
+    % Code information
+    nCode = size(theseCodeDescriptions, 1);
+    for iCode = 1 : nCode
+        thisCodeName = codeNamesSorted{iCode};
+        [~, thisCodeNameNoExtension, ~] = fileparts(thisCodeName);
+%         thisCodeFullfile = fullfile(thisCodeGroupDirectory, thisCodeName);
+        thisCodeDescription = codeDescriptionsSorted{iCode};
+%         fprintf(fileID, '%s \n', ['% * <file:' thisCodeNameNoExtension '.html ' thisCodeName '> - ' thisCodeDescription ' | <file:' thisCodeFullfile ' code>']);
+        fprintf(fileID, '%s \n', ['% * <file:' thisCodeNameNoExtension '.html ' thisCodeName '> - ' thisCodeDescription]);
+
+    end
+  
+end  % iCodeGroups loop
+  
+fclose(fileID);
+
+
+end  % function htmlMakeTableOfContents(TableParameters)
+
+
+##### SOURCE END #####
+--></body></html>

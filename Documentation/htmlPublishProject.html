@@ -1,0 +1,215 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>htmlPublishProject</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-26"><meta name="DC.source" content="htmlPublishProject.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>htmlPublishProject</h1><!--introduction--><p>Publish all m-files associated with a project to HTML</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#4">See also</a></li><li><a href="#5">Function</a></li><li><a href="#7">Assign variables</a></li><li><a href="#8">Create table of contents file</a></li><li><a href="#9">Publish code</a></li><li><a href="#10">Clean up project directories</a></li></ul></div><h2>Syntax<a name="1"></a></h2><p>htmlPublishProject(PublishProjectParameters)</p><h2>Description<a name="2"></a></h2><p>htmlPublishProject calls htmlMakeTableOfContents and htmlPublishDirectory to publish all the code that has been documented in the CodeNotes structure (see htmlMakeTableOfContents).</p><div><ul><li>PublishProjectParameters.CodeNotes     - this is the CodeNotes field in TableParameters that is passed to htmlMakeTableOfContents</li><li>PublishProjectParameters.projectName  - name that will appear at the top of the TABLE_OF_CONTENTS file</li><li>PublishProjectParameters.directoryProject   - directory where the documentation folder will be written</li></ul></div><h2>Example<a name="3"></a></h2><pre>PublishProjectParameters.CodeNotes = CodeNotes;
+PublishProjectParameters.projectName = projectName;
+PublishProjectParameters.directoryProject = directoryProject;
+htmlPublishProject(PublishProjectParameters)</pre><h2>See also<a name="4"></a></h2><div><ul><li><a href="file:htmlMakeTableOfContents.html">htmlMakeTableOfContents</a></li><li><a href="file:htmlPublishDirectory.html">htmlPublishDirectory</a></li></ul></div><p>Michael F. Bonner | University of Pennsylvania | <a href="http://www.michaelfbonner.com">http://www.michaelfbonner.com</a></p><h2>Function<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> htmlPublishProject(PublishProjectParameters)
+</pre><h2>Assign variables<a name="7"></a></h2><pre class="codeinput">CodeNotes = PublishProjectParameters.CodeNotes;
+projectName = PublishProjectParameters.projectName;
+directoryProject = PublishProjectParameters.directoryProject;
+</pre><h2>Create table of contents file<a name="8"></a></h2><p>Write a TABLE_OF_CONTENTS.m that is formatted to generate an TABLE_OF_CONTENTS.html file</p><pre class="codeinput">TableParameters.CodeNotes = CodeNotes;
+TableParameters.directoryCode = directoryProject;
+TableParameters.projectName = projectName;
+htmlMakeTableOfContents(TableParameters);
+</pre><h2>Publish code<a name="9"></a></h2><pre class="codeinput"><span class="comment">% Sub-directories</span>
+directoryNames = fieldnames(CodeNotes);
+nDirectoryNames = length(directoryNames);
+
+<span class="comment">% Publish code in each sub-directory</span>
+<span class="keyword">for</span> iDirectoryNames = 1 : nDirectoryNames
+
+    thisDirectoryName = directoryNames{iDirectoryNames};
+    PublishParameters.directoryCode = thisDirectoryName;
+    PublishParameters.directoryProject = directoryProject;
+    htmlPublishDirectory(PublishParameters)
+
+<span class="keyword">end</span>
+
+<span class="comment">% Publish anything in the main project directory</span>
+PublishParameters.directoryCode = directoryProject;
+PublishParameters.directoryProject = directoryProject;
+htmlPublishDirectory(PublishParameters)
+</pre><h2>Clean up project directories<a name="10"></a></h2><pre class="codeinput"><span class="comment">% Remove the unecessary TABLE_OF_CONTENTS.m file</span>
+tableOfContentsMfile = fullfile(directoryProject, <span class="string">'TABLE_OF_CONTENTS.m'</span>);
+delete(tableOfContentsMfile);
+
+<span class="comment">% Remove the unecessary CodeDescriptions.html file</span>
+directoryDocumentation = fullfile(directoryProject, <span class="string">'Documentation'</span>);
+tableOfContentsMfile = fullfile(directoryDocumentation, <span class="string">'CodeDescriptions.html'</span>);
+<span class="keyword">if</span> exist(tableOfContentsMfile, <span class="string">'file'</span>)
+    delete(tableOfContentsMfile);
+<span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>  <span class="comment">% function htmlPublishProject(PublishProjectParameters)</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% htmlPublishProject
+%
+% Publish all m-files associated with a project to HTML
+% 
+%% Syntax
+% 
+% htmlPublishProject(PublishProjectParameters)
+% 
+%% Description
+% 
+% htmlPublishProject calls htmlMakeTableOfContents and htmlPublishDirectory
+% to publish all the code that has been documented in the CodeNotes
+% structure (see htmlMakeTableOfContents).
+% 
+% *  PublishProjectParameters.CodeNotes     - this is the CodeNotes field
+% in TableParameters that is passed to htmlMakeTableOfContents
+% * PublishProjectParameters.projectName  - name that will appear
+% at the top of the TABLE_OF_CONTENTS file
+% * PublishProjectParameters.directoryProject   - directory where the
+% documentation folder will be written
+%
+%% Example
+%
+%  PublishProjectParameters.CodeNotes = CodeNotes;
+%  PublishProjectParameters.projectName = projectName;
+%  PublishProjectParameters.directoryProject = directoryProject;
+%  htmlPublishProject(PublishProjectParameters)
+% 
+%% See also
+%
+% * <file:htmlMakeTableOfContents.html htmlMakeTableOfContents>
+% * <file:htmlPublishDirectory.html htmlPublishDirectory>
+% 
+% Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
+
+
+
+%% Function
+
+function htmlPublishProject(PublishProjectParameters)
+
+
+%% Assign variables
+
+CodeNotes = PublishProjectParameters.CodeNotes;
+projectName = PublishProjectParameters.projectName;
+directoryProject = PublishProjectParameters.directoryProject;
+
+
+
+%% Create table of contents file
+%
+% Write a TABLE_OF_CONTENTS.m that is formatted to generate an
+% TABLE_OF_CONTENTS.html file
+
+TableParameters.CodeNotes = CodeNotes;
+TableParameters.directoryCode = directoryProject;
+TableParameters.projectName = projectName;
+htmlMakeTableOfContents(TableParameters);
+
+
+
+%% Publish code
+
+% Sub-directories
+directoryNames = fieldnames(CodeNotes);
+nDirectoryNames = length(directoryNames);
+
+% Publish code in each sub-directory
+for iDirectoryNames = 1 : nDirectoryNames
+    
+    thisDirectoryName = directoryNames{iDirectoryNames};
+    PublishParameters.directoryCode = thisDirectoryName;
+    PublishParameters.directoryProject = directoryProject;
+    htmlPublishDirectory(PublishParameters)
+    
+end
+
+% Publish anything in the main project directory
+PublishParameters.directoryCode = directoryProject;
+PublishParameters.directoryProject = directoryProject;
+htmlPublishDirectory(PublishParameters)
+
+
+
+%% Clean up project directories
+
+% Remove the unecessary TABLE_OF_CONTENTS.m file
+tableOfContentsMfile = fullfile(directoryProject, 'TABLE_OF_CONTENTS.m');
+delete(tableOfContentsMfile);
+
+% Remove the unecessary CodeDescriptions.html file
+directoryDocumentation = fullfile(directoryProject, 'Documentation');
+tableOfContentsMfile = fullfile(directoryDocumentation, 'CodeDescriptions.html');
+if exist(tableOfContentsMfile, 'file')
+    delete(tableOfContentsMfile);
+end
+
+
+end  % function htmlPublishProject(PublishProjectParameters)
+
+
+
+##### SOURCE END #####
+--></body></html>

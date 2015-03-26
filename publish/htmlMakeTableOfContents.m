@@ -36,7 +36,8 @@
 % 
 %% See also
 %
-% * htmlPublishDirectory
+% * <file:htmlPublishDirectory.html htmlPublishDirectory>
+% * <file:htmlPublishProject.html htmlPublishProject>
 % 
 % Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
 
@@ -96,9 +97,9 @@ for iCodeGroups = 1 : nCodeGroups
     for iCode = 1 : nCode
         thisCodeName = codeNamesSorted{iCode};
         [~, thisCodeNameNoExtension, ~] = fileparts(thisCodeName);
-        thisCodeFullfile = fullfile(directoryCode, thisCodeName);
         thisCodeDescription = codeDescriptionsSorted{iCode};
-        fprintf(fileID, '%s \n', ['% * <file:' thisCodeNameNoExtension '.html ' thisCodeName '> - ' thisCodeDescription ' | <file:' thisCodeFullfile ' code>']);
+        fprintf(fileID, '%s \n', ['% * <file:' thisCodeNameNoExtension '.html ' thisCodeName '> - ' thisCodeDescription]);
+
     end
   
 end  % iCodeGroups loop

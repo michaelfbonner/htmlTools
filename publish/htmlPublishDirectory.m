@@ -14,7 +14,9 @@
 % or edited since the last call. The HTML files are written to a directory
 % titled 'CodeNotes'.
 % 
-% * PublishParameters.directoryCode         - directory with m-files
+% * PublishParameters.directoryCode     - directory with m-files
+% * PublishParameters.directoryProject  - directory where the documentation
+% folder will be written
 % 
 % The edit dates for each m-file are saved to 'DatesEdited.mat', which
 % contains:
@@ -29,7 +31,8 @@
 % 
 %% See also
 % 
-% * htmlMakeTableOfContents
+% * <file:htmlMakeTableOfContents.html htmlMakeTableOfContents>
+% * <file:htmlPublishProject.html htmlPublishProject>
 % 
 % Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
 
@@ -40,36 +43,50 @@
 function htmlPublishDirectory(PublishParameters)
 
 
-%% Publish to html
+%% Assign variables
 
+% Directories
 directoryCode = PublishParameters.directoryCode;
+directoryProject = PublishParameters.directoryProject;
+directoryOutput = fullfile(directoryProject, 'Documentation');
+if ~exist(directoryOutput, 'dir')
+    mkdir(directoryOutput);
+end
 
+% Files to publish
 searchTerm = fullfile(directoryCode, '*.m');
 matlabFiles = dir(searchTerm);
 nMatlabFiles = length(matlabFiles);
 
-directoryOutput = fullfile(directoryCode, 'Documentation');
-
-% Load in DatesEdited if it exists
+% Load in DatesEdited which keeps a log of when the code files were last
+% edited. This allows us to avoid re-publishing html documentation that
+% already exists
 DatesEditedFullfile = fullfile(directoryOutput, 'DatesEdited.mat');
 if exist(DatesEditedFullfile, 'file')
     load(DatesEditedFullfile);
     % Loads:
-    % * DatesEdited  - structure with dates when the m-files were
+    % * DatesEdited  - structure with dates for when the m-files were
     % last edited (or created)
 else
     DatesEdited = struct();
 end
 
-% Publish new or newly edited files
+
+
+%% Publish to html
+
+% Publish any new or newly edited files
 for iMatlabFiles = 1 : nMatlabFiles
     
+    % File path and name
     thisFile = matlabFiles(iMatlabFiles).name;
     thisFullfile = fullfile(directoryCode, thisFile);
     [~, thisFileName, ~] = fileparts(thisFile);
     
+    % Most recent edit date that was published to html
     mostRecentEditDate = matlabFiles(iMatlabFiles).datenum;
     
+    % Check if the file has been edited since the mostRecentEditDate
     isNew = true;
     if isfield(DatesEdited, thisFileName)
         previousEditDate = DatesEdited.(thisFileName);
@@ -85,6 +102,7 @@ for iMatlabFiles = 1 : nMatlabFiles
  
 end
 
+% Save a log of the current edit dates
 save(DatesEditedFullfile, 'DatesEdited');
 
 

@@ -6,10 +6,8 @@ function.
 
 **Documentation**
 
-Run CodeDescriptions.m to generate HTML documentation for this project. This
-will generate HTML documentation for all functions in a new directory titled
-Documentation. Brief descriptions of all functions can be found in the
-TABLE\_OF\_CONTENTS.html document.
+The directory titled Documentation contains HTML manuals for all functions. See
+the TABLE\_OF\_CONTENTS.html file to get started.
 
  
 
