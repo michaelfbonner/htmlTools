@@ -77,7 +77,7 @@ for iDirectoryNames = 1 : nDirectoryNames
 end
 
 % Publish anything in the main project directory
-PublishParameters.directoryCode = directoryProject;
+PublishParameters.directoryCode = '';
 PublishParameters.directoryProject = directoryProject;
 htmlPublishDirectory(PublishParameters)
 
@@ -90,7 +90,7 @@ tableOfContentsMfile = fullfile(directoryProject, 'TABLE_OF_CONTENTS.m');
 delete(tableOfContentsMfile);
 
 % Remove the unecessary CodeDescriptions.html file
-directoryDocumentation = fullfile(directoryProject, 'Documentation');
+directoryDocumentation = fullfile(directoryProject, 'documentation');
 tableOfContentsMfile = fullfile(directoryDocumentation, 'CodeDescriptions.html');
 if exist(tableOfContentsMfile, 'file')
     delete(tableOfContentsMfile);

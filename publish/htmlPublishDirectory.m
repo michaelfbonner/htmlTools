@@ -12,7 +12,10 @@
 % It also saves a 'DatesEdited.mat' file. Subsequent calls of this function
 % for the same directory will only publish m-files that have been created
 % or edited since the last call. The HTML files are written to a directory
-% titled 'CodeNotes'.
+% titled 'CodeNotes'. This function should be called from the main project
+% directory so that sub-directory indexing can work without having to use
+% the full file paths. This behavior ensures that the hyperlinks in the
+% documentation will work on other machines.
 % 
 % * PublishParameters.directoryCode     - directory with m-files
 % * PublishParameters.directoryProject  - directory where the documentation
@@ -46,8 +49,8 @@ function htmlPublishDirectory(PublishParameters)
 %% Assign variables
 
 % Directories
-directoryCode = PublishParameters.directoryCode;
 directoryProject = PublishParameters.directoryProject;
+directoryCode = fullfile(directoryProject, PublishParameters.directoryCode);
 directoryOutput = fullfile(directoryProject, 'documentation');
 if ~exist(directoryOutput, 'dir')
     mkdir(directoryOutput);
